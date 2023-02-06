@@ -15,6 +15,7 @@ import { useProductsContext } from "./products_context";
 const initialState = {
   filtered_products: [],
   all_products: [],
+  grid_view: true,
 };
 
 const FilterContext = React.createContext();
@@ -22,12 +23,13 @@ const FilterContext = React.createContext();
 export const FilterProvider = ({ children }) => {
   const { products } = useProductsContext(); //We need products to filter. Hence we get products from ProductsContext
   const [state, dispatch] = useReducer(reducer, initialState);
+
   useEffect(() => {
     dispatch({ type: LOAD_PRODUCTS, payload: products });
   }, [products]); //By default, this value will be zero.
   //But when the products load, This reducer hook will be called filling all_products[] of filter context with products from ProductContext
   return (
-    <FilterContext.Provider value="filter context">
+    <FilterContext.Provider value={{ ...state }}>
       {children}
     </FilterContext.Provider>
   );

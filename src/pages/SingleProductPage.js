@@ -24,7 +24,6 @@ const SingleProductPage = () => {
     fetchSingleProduct,
   } = useProductsContext();
   const navigate = useNavigate(); //useNavigate is used to get the history of user from browser
-  console.log(id);
 
   useEffect(() => {
     fetchSingleProduct(`${url}${id}`);
