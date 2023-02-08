@@ -6,9 +6,9 @@ export const formatPrice = (number) => {
 };
 
 export const getUniqueValues = (data, type) => {
-  let unique = data.map((item) => item[type]);
+  let unique = data.map((item) => item[type]); //colors is Array of Arrays. Hence unique.flat is used to flatten them
   if (type === "colors") {
-    unique = unique.flat();
+    unique = unique.flat(); //This returns a single array with unique values for colors like the rest of types
   }
 
   return ["all", ...new Set(unique)];

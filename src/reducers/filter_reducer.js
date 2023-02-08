@@ -15,7 +15,7 @@ const filter_reducer = (state, action) => {
     maxPrice = Math.max(...maxPrice);
     return {
       ...state,
-      all_products: [...action.payload], //This should not be all_products:[action.payload] as JS will be pointing to the same memory. We are spreading the action.payload and storing it in different memry spaces
+      all_products: [...action.payload], //This should not be all_products:[action.payload] as JS will be pointing to the same memory. Hence are spreading the action.payload with ... and storing it in different memry spaces
       filtered_products: [...action.payload], //This should not be filtered_products:[action.payload]. We are spreading the action.payload and storing it in different memry spaces
       filters: { ...state.filters, max_price: maxPrice, price: maxPrice },
     };
